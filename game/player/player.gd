@@ -26,8 +26,3 @@ func _fixed_process(delta):
 		var normal = get_collision_normal()
 		velocity = normal.slide(extra)
 		move(normal.slide(extra))
-		
-
-		print(collider)
-
-	

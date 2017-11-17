@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://scenes/levels/level1.gd" type="Script" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/crate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/levels/Dirt 2 .tex" type="Texture" id=4]
 
 [node name="root" type="Node"]
 
@@ -14,6 +15,34 @@ transform/pos = Vector2( 509.425, 177.773 )
 
 [node name="crate" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 479.086, 33.2358 )
+transform/pos = Vector2( 453.239, 72.6867 )
+
+[node name="crate1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 606.961, -174.902 )
+
+[node name="crate2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 260.066, -33.4226 )
+
+[node name="crate3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 300.877, 245.454 )
+
+[node name="crate4" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 707.629, 91.7319 )
+
+[node name="background" type="Sprite" parent="."]
+
+transform/pos = Vector2( 511.889, -143.81 )
+transform/scale = Vector2( 0.1, 0.1 )
+z/z = -1
+texture = ExtResource( 4 )
+region = true
+region_rect = Rect2( 0, 0, 20480, 20480 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 
