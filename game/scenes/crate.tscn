@@ -28,7 +28,7 @@ sleeping = false
 can_sleep = true
 velocity/linear = Vector2( 0, 0 )
 velocity/angular = 0.0
-damp_override/linear = 20.0
+damp_override/linear = 10.0
 damp_override/angular = 10.0
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
