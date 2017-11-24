@@ -1,13 +1,19 @@
 extends KinematicBody2D
 
-var velocity = Vector2()
 const SPEED = 15000
 const FRICTION = -900
 
 var pos = Vector2()
+var world_node
+
+onready var projectile_scene = preload("res://player/projectile.tscn")
+
+func init(world):
+	world_node = world
 
 func _ready():
 	set_fixed_process(true)
+	set_process_input(true)
 	pass
 
 func _fixed_process(delta):
@@ -26,3 +32,10 @@ func _fixed_process(delta):
 		var normal = get_collision_normal()
 		velocity = normal.slide(extra)
 		move(normal.slide(extra))
+		
+func _input(event):
+	if event.type == InputEvent.MOUSE_BUTTON:
+		if event.is_action_pressed("mouse_down"):
+			var projectile = projectile_scene.instance()
+			projectile.init(get_pos(), Vector2(0, 100))
+			world_node.add_child(projectile)
