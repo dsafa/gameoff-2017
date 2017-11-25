@@ -39,6 +39,6 @@ func _input(event):
 		if event.is_action_pressed("mouse_down"):
 			var direction = (get_global_mouse_pos() - get_pos()).normalized()
 			var projectile = projectile_scene.instance()
-			projectile.set_pos(get_pos() + direction * 60)
+			projectile.set_pos(get_pos() + direction * 70)
 			projectile.apply_impulse(Vector2(), direction * PROJECTILE_SPEED)
 			world_node.add_child(projectile)
