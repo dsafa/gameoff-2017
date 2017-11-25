@@ -33,12 +33,20 @@ func _fixed_process(delta):
 		var normal = get_collision_normal()
 		velocity = normal.slide(extra)
 		move(normal.slide(extra))
-		
+	
+	get_node("catch").set_pos(get_catch_pos())
+	
+	
 func _input(event):
 	if event.type == InputEvent.MOUSE_BUTTON:
 		if event.is_action_pressed("mouse_down"):
-			var direction = (get_global_mouse_pos() - get_pos()).normalized()
 			var projectile = projectile_scene.instance()
-			projectile.set_pos(get_pos() + direction * 70)
-			projectile.apply_impulse(Vector2(), direction * PROJECTILE_SPEED)
+			projectile.set_pos(get_pos() + get_catch_pos())
+			projectile.apply_impulse(Vector2(), get_mouse_dir() * PROJECTILE_SPEED)
 			world_node.add_child(projectile)
+			
+func get_mouse_dir():
+	return (get_global_mouse_pos() - get_pos()).normalized()
+	
+func get_catch_pos():
+	return get_mouse_dir() * 70
