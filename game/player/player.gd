@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const SPEED = 15000
 const FRICTION = -900
+const PROJECTILE_SPEED = 300
 
 var pos = Vector2()
 var world_node
@@ -36,6 +37,8 @@ func _fixed_process(delta):
 func _input(event):
 	if event.type == InputEvent.MOUSE_BUTTON:
 		if event.is_action_pressed("mouse_down"):
+			var direction = (get_global_mouse_pos() - get_pos()).normalized()
 			var projectile = projectile_scene.instance()
-			projectile.init(get_pos(), Vector2(0, 100))
+			projectile.set_pos(get_pos() + direction * 60)
+			projectile.apply_impulse(Vector2(), direction * PROJECTILE_SPEED)
 			world_node.add_child(projectile)
